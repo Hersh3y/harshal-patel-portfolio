@@ -571,7 +571,7 @@
         }
 
         .project-card:hover {
-            transform: rotateY(10deg) rotateX(10deg) scale(1.05);
+            transform: scale(1.05);
             box-shadow: 0 30px 60px rgba(99, 102, 241, 0.4);
         }
 
@@ -977,6 +977,71 @@
             0%, 50% { opacity: 1; }
             51%, 100% { opacity: 0; }
         }
+
+        .tech-stack-sections {
+            margin: 2rem 0 0 0;
+            gap: 3rem;
+        }
+        .tech-stack-group {
+            background: rgba(255,255,255,0.03);
+            border: 1.5px solid rgba(99,102,241,0.10);
+            border-radius: 18px;
+            box-shadow: 0 4px 32px rgba(99,102,241,0.07);
+            padding: 2rem 1.5rem 1.5rem 1.5rem;
+            min-width: 270px;
+            max-width: 340px;
+            flex: 1 1 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: box-shadow 0.3s;
+        }
+        .tech-stack-group:hover {
+            box-shadow: 0 8px 40px rgba(99,102,241,0.18);
+            border-color: var(--primary);
+        }
+        .tech-stack-heading {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 1.2rem;
+            letter-spacing: 0.5px;
+            text-align: center;
+            text-shadow: 0 2px 12px rgba(99,102,241,0.10);
+        }
+        .tech-stack-group .hexagon-grid {
+            gap: 0.7rem;
+            margin: 0;
+            justify-content: center;
+        }
+        .tech-stack-group .hexagon {
+            background: linear-gradient(135deg, rgba(99,102,241,0.13), rgba(236,72,153,0.13));
+            border: 2px solid rgba(99,102,241,0.13);
+            transition: background 0.3s, border 0.3s, transform 0.3s;
+        }
+        .tech-stack-group .hexagon:hover {
+            background: linear-gradient(135deg, rgba(99,102,241,0.25), rgba(236,72,153,0.25));
+            border: 2px solid var(--primary);
+            transform: scale(1.13);
+            z-index: 2;
+        }
+        .tech-stack-group .hexagon span {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--light);
+            letter-spacing: 0.02em;
+        }
+        @media (max-width: 1100px) {
+            .tech-stack-sections {
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+            }
+            .tech-stack-group {
+                max-width: 100%;
+                min-width: 250px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1076,9 +1141,9 @@
                 <div class="timeline-content">
                     <h4>AI Research Assistant</h4>
                     <p><strong>Clemson University - Watt AI Program</strong> | Aug. 2025–Present | Clemson, SC</p>
-                    <ul>
-                        <li>Selected to join a multidisciplinary AI research initiative, working on a dedicated project team to solve high-impact, real-world problems using artificial intelligence and machine learning.</li>
-                    </ul>
+                    <p>
+                        Selected to join a multidisciplinary AI research initiative, working on a dedicated project team to solve high-impact, real-world problems using artificial intelligence and machine learning.
+                    </p>
                 </div>
             </div>
             <div class="timeline-item">
@@ -1086,9 +1151,9 @@
                 <div class="timeline-content">
                     <h4>Teaching Assistant</h4>
                     <p><strong>Clemson University - School of Computing</strong> | Aug. 2025–Present | Clemson, SC</p>
-                    <ul>
-                        <li>Selected to instruct a weekly lab section of 20 students for a Python programming course.</li>
-                    </ul>
+                    <p>
+                        Selected to instruct a weekly lab section of 20 students for a Python programming course.
+                    </p>
                 </div>
             </div>
             <div class="timeline-item">
@@ -1096,11 +1161,11 @@
                 <div class="timeline-content">
                     <h4>Privacy Compliance Research Assistant</h4>
                     <p><strong>Clemson University - Creative Inquiry</strong> | Jan. 2025–May 2025 | Clemson, SC</p>
-                    <ul>
-                        <li>Conducted an extensive review on privacy labels and their effectiveness in ensuring transparency and compliance with regulations like GDPR, CCPA, and CalOPPA.</li>
-                        <li>Analyzed 14 research papers on privacy policies, data collection disclosures, and regulatory compliance in appified ecosystems to assess their impact on privacy transparency and user protection.</li>
-                        <li>Synthesized findings into a survey paper, summarizing key trends, challenges, and advancements in privacy labels across different platforms.</li>
-                    </ul>
+                    <p>
+                        Conducted an extensive review on privacy labels and their effectiveness in ensuring transparency and compliance with regulations like GDPR, CCPA, and CalOPPA.
+                        Analyzed 14 research papers on privacy policies, data collection disclosures, and regulatory compliance in appified ecosystems to assess their impact on privacy transparency and user protection.
+                        Synthesized findings into a survey paper, summarizing key trends, challenges, and advancements in privacy labels across different platforms.
+                    </p>
                 </div>
             </div>
             <div class="timeline-item">
@@ -1108,11 +1173,11 @@
                 <div class="timeline-content">
                     <h4>Motel Receptionist</h4>
                     <p><strong>The Night Inn</strong> | May 2020–Aug. 2024 | Union, SC</p>
-                    <ul>
-                        <li>Greeted and assisted over 48 guests weekly with check-in, check-out, and reservations, ensuring a seamless and welcoming experience that contributed to a 0.4-star increase in the motel’s Google rating.</li>
-                        <li>Handled an average of 25+ phone inquiries per shift, providing prompt and informative responses about motel services, pricing, and local recommendations.</li>
-                        <li>Utilized motel booking software to manage room availability and optimize occupancy rates.</li>
-                    </ul>
+                    <p>
+                        Greeted and assisted over 48 guests weekly with check-in, check-out, and reservations, ensuring a seamless and welcoming experience that contributed to a 0.4-star increase in the motel’s Google rating.
+                        Handled an average of 25+ phone inquiries per shift, providing prompt and informative responses about motel services, pricing, and local recommendations.
+                        Utilized motel booking software to manage room availability and optimize occupancy rates.
+                    </p>
                 </div>
             </div>
         </div>
@@ -1129,17 +1194,15 @@
                 <div class="project-body">
                     <p>
                         Developed a full-stack mobile app that connects disaster victims with nearby volunteers using real-time geolocation, enabling rapid, proximity-based matching & improving disaster response coordination at scale.
+                        Integrated Google Maps API for geolocation tracking, map visualization, and live data refresh every 10 seconds.
+                        Recognized with the Wild Card Award for innovative use of geolocation and real-time mapping in emergency coordination during a 24-hour hackathon.
                     </p>
-                    <ul>
-                        <li>Integrated Google Maps API for geolocation tracking, map visualization, and live data refresh every 10 seconds.</li>
-                        <li>Recognized with the Wild Card Award for innovative use of geolocation and real-time mapping in emergency coordination during a 24-hour hackathon.</li>
-                    </ul>
                     <div class="tech-stack">
                         <span class="tech-badge">TypeScript</span>
                         <span class="tech-badge">React Native</span>
+                        <span class="tech-badge">Node.js</span>
                         <span class="tech-badge">Expo</span>
                         <span class="tech-badge">Google Maps API</span>
-                        <span class="tech-badge">Git</span>
                     </div>
                 </div>
             </div>
@@ -1150,11 +1213,9 @@
                 <div class="project-body">
                     <p>
                         Developed a GUI-based parking management system using Python and Tkinter for Clemson University parking lots C1 and C2, allowing real-time space visualization and manual check-in/out.
+                        Designed user authentication system with login and account creation features.
+                        Collaborated in a 4-person team during a 12-hour freshman-only hackathon, winning the Best Hack for Good award.
                     </p>
-                    <ul>
-                        <li>Designed user authentication system with login and account creation features.</li>
-                        <li>Collaborated in a 4-person team during a 12-hour freshman-only hackathon, winning the Best Hack for Good award.</li>
-                    </ul>
                     <div class="tech-stack">
                         <span class="tech-badge">Python</span>
                         <span class="tech-badge">Tkinter</span>
@@ -1167,23 +1228,45 @@
     <!-- Skills Section -->
     <section id="skills">
         <div class="section-title">Tech Stack</div>
-        <div class="hexagon-grid">
-            <div class="hexagon"><span>Python</span></div>
-            <div class="hexagon"><span>C/C++</span></div>
-            <div class="hexagon"><span>SQL</span></div>
-            <div class="hexagon"><span>JavaScript</span></div>
-            <div class="hexagon"><span>TypeScript</span></div>
-            <div class="hexagon"><span>HTML/CSS</span></div>
-            <div class="hexagon"><span>Flask</span></div>
-            <div class="hexagon"><span>React.js</span></div>
-            <div class="hexagon"><span>React Native</span></div>
-            <div class="hexagon"><span>Git</span></div>
-            <div class="hexagon"><span>VS Code</span></div>
-            <div class="hexagon"><span>Linux</span></div>
-            <div class="hexagon"><span>Vim</span></div>
-            <div class="hexagon"><span>NumPy</span></div>
-            <div class="hexagon"><span>Pandas</span></div>
-            <div class="hexagon"><span>Matplotlib</span></div>
+        <div class="tech-stack-sections" style="display: flex; flex-wrap: wrap; gap: 2.5rem; justify-content: center;">
+            <!-- Languages -->
+            <div class="tech-stack-group">
+                <div class="tech-stack-heading">Languages</div>
+                <div class="hexagon-grid">
+                    <div class="hexagon"><span>Python</span></div>
+                    <div class="hexagon"><span>C/C++</span></div>
+                    <div class="hexagon"><span>SQL</span></div>
+                    <div class="hexagon"><span>JavaScript</span></div>
+                    <div class="hexagon"><span>TypeScript</span></div>
+                    <div class="hexagon"><span>HTML/CSS</span></div>
+                </div>
+            </div>
+            <!-- Frameworks & Libraries -->
+            <div class="tech-stack-group">
+                <div class="tech-stack-heading">Frameworks & Libraries</div>
+                <div class="hexagon-grid">
+                    <div class="hexagon"><span>Flask</span></div>
+                    <div class="hexagon"><span>React.js</span></div>
+                    <div class="hexagon"><span>React Native</span></div>
+                    <div class="hexagon"><span>NumPy</span></div>
+                    <div class="hexagon"><span>Pandas</span></div>
+                    <div class="hexagon"><span>Matplotlib</span></div>
+                    <div class="hexagon"><span>Tkinter</span></div>
+                </div>
+            </div>
+            <!-- Developer Tools -->
+            <div class="tech-stack-group">
+                <div class="tech-stack-heading">Developer Tools</div>
+                <div class="hexagon-grid">
+                    <div class="hexagon"><span>Git</span></div>
+                    <div class="hexagon"><span>Firebase</span></div>
+                    <div class="hexagon"><span>Expo</span></div>
+                    <div class="hexagon"><span>Vercel</span></div>
+                    <div class="hexagon"><span>VS Code</span></div>
+                    <div class="hexagon"><span>Linux</span></div>
+                    <div class="hexagon"><span>Vim</span></div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1264,6 +1347,9 @@
         const typingPhrases = [
             "First-Generation Student",
             "Full-Stack Developer",
+            "AI Enthusiast",
+            "Teaching Assistant",
+            "One Piece Enthusiast",
             "Clemson Tiger"
         ];
         const typingElement = document.getElementById('typing-animation');
