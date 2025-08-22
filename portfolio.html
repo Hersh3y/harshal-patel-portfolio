@@ -180,59 +180,140 @@
             margin: 0 auto;
             padding: 1.5rem 2rem;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
+            position: relative;
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 2rem;
+            font-weight: 900;
+            letter-spacing: 0.04em;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
             -webkit-text-fill-color: transparent;
-            animation: glow 2s ease-in-out infinite alternate;
+            text-shadow: 0 2px 16px rgba(99,102,241,0.13);
+            transition: text-shadow 0.3s;
+            cursor: pointer;
+            user-select: none;
         }
 
-        @keyframes glow {
-            from { filter: drop-shadow(0 0 10px rgba(99, 102, 241, 0.5)); }
-            to { filter: drop-shadow(0 0 20px rgba(236, 72, 153, 0.8)); }
+        .logo:hover {
+            text-shadow: 0 4px 32px var(--primary), 0 2px 16px var(--secondary);
+            filter: brightness(1.2);
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1rem;
             list-style: none;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+            padding-left: 0;
         }
 
-        .nav-links a {
-            text-decoration: none;
-            color: var(--light);
-            font-weight: 500;
+        .nav-links li a {
             position: relative;
-            transition: all 0.3s ease;
-            padding: 0.5rem 1rem;
-            cursor: none;
+            font-size: 1.08rem;
+            font-weight: 700;
+            color: var(--light);
+            text-decoration: none;
+            letter-spacing: 0.03em;
+            padding: 0.3em 0.7em;
+            border-radius: 8px;
+            transition: color 0.2s, background 0.2s, box-shadow 0.2s;
+            z-index: 1;
+            overflow: hidden;
         }
 
-        .nav-links a::before {
+        .nav-links li a::after {
             content: '';
             position: absolute;
-            bottom: 0;
             left: 50%;
-            width: 0;
-            height: 2px;
+            bottom: 0;
+            width: 0%;
+            height: 3px;
             background: linear-gradient(90deg, var(--primary), var(--secondary));
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
+            border-radius: 2px;
+            transition: width 0.3s, left 0.3s;
+            z-index: -1;
         }
 
-        .nav-links a:hover {
+        .nav-links li a:hover,
+        .nav-links li a:focus {
             color: var(--primary);
-            transform: translateY(-2px);
+            background: rgba(99,102,241,0.08);
+            box-shadow: 0 2px 16px rgba(99,102,241,0.10);
         }
 
-        .nav-links a:hover::before {
+        .nav-links li a:hover::after,
+        .nav-links li a:focus::after {
             width: 100%;
+            left: 0;
+        }
+
+        .nav-socials {
+            display: flex;
+            gap: 1.2rem;
+            align-items: center;
+            margin-left: 2rem;
+        }
+
+        .nav-social-link {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.07);
+            border: 1.5px solid rgba(99,102,241,0.13);
+            transition: background 0.2s, border 0.2s, transform 0.2s;
+            padding: 4px;
+        }
+        .nav-social-link img {
+            width: 22px;
+            height: 22px;
+            filter: brightness(1.2) grayscale(0.2);
+            transition: filter 0.2s;
+        }
+        .nav-social-link:hover {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border: 1.5px solid var(--primary);
+            transform: translateY(-2px) scale(1.13);
+        }
+        .nav-social-link:hover img {
+            filter: brightness(2) grayscale(0);
+        }
+
+        @media (max-width: 900px) {
+            .nav-container {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            .nav-socials {
+                margin-left: 0.5rem;
+                gap: 0.7rem;
+            }
+        }
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 1.2rem 1rem;
+            }
+            .nav-links {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.5rem;
+            }
+            .nav-socials {
+                margin-left: 0.2rem;
+                gap: 0.5rem;
+            }
         }
 
         /* Hero Section */
@@ -1087,6 +1168,74 @@
                 min-width: 250px;
             }
         }
+
+        .contact-links-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+            justify-content: center;
+            align-items: center;
+            margin: 2.5rem 0 3rem 0;
+        }
+        .contact-link-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 110px;
+            height: 110px;
+            border-radius: 24px;
+            background: rgba(255,255,255,0.07);
+            border: 2px solid rgba(99,102,241,0.13);
+            box-shadow: 0 4px 24px rgba(99,102,241,0.10);
+            transition: box-shadow 0.25s, border 0.25s, transform 0.25s, background 0.25s;
+            text-decoration: none;
+            color: var(--light);
+            font-weight: 700;
+            font-size: 1.08rem;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .contact-link-card img {
+            width: 38px;
+            height: 38px;
+            margin-bottom: 0.7rem;
+            filter: brightness(1.2) grayscale(0.2);
+            transition: filter 0.2s;
+        }
+        .contact-link-card span {
+            font-size: 1.05rem;
+            color: var(--light);
+            letter-spacing: 0.01em;
+        }
+        .contact-link-card:hover {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff;
+            border: 2px solid var(--primary);
+            box-shadow: 0 8px 32px rgba(99,102,241,0.18);
+            transform: translateY(-6px) scale(1.07);
+        }
+        .contact-link-card:hover img {
+            filter: brightness(2) grayscale(0);
+        }
+
+        /* Clemson logo for timeline */
+        .timeline-logo {
+            position: absolute;
+            left: 100%;
+            top: 2.5rem;
+            width: 70px;
+            transform: translateX(-50%);
+            z-index: 1;
+            opacity: 0.8;
+            pointer-events: none;
+        }
+
+        .timeline-logo img {
+            width: 70px;
+            height: auto;
+        }
     </style>
 </head>
 <body>
@@ -1108,18 +1257,32 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">Harshal Patel</div>
+            <ul class="nav-links" id="nav-links" style="flex: 1; justify-content: center; align-items: center;">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Tech Stack</a></li>
+                <li><a href="#contact">Let's Connect</a></li>
+            </ul>
+            <div class="nav-socials">
+                <a href="https://github.com/hersh3y" class="nav-social-link" target="_blank" aria-label="GitHub">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub" />
+                </a>
+                <a href="https://www.linkedin.com/in/harshal-a-patel/" class="nav-social-link" target="_blank" aria-label="LinkedIn">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn" />
+                </a>
+                <a href="mailto:harshal29379@gmail.com" class="nav-social-link" aria-label="Email">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" alt="Email" />
+                </a>
+                <a href="https://leetcode.com/u/H3rshey/" class="nav-social-link" target="_blank" aria-label="LeetCode">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/leetcode.svg" alt="LeetCode" />
+                </a>
+            </div>
             <div class="menu-toggle" id="menu-toggle">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">Tech Stack</a></li>
-                <li><a href="#contact">Contact Me</a></li>
-            </ul>
         </div>
     </nav>
 
@@ -1157,8 +1320,8 @@
             </div>
             <!-- Right: Headshot Image (much bigger, with placeholder) -->
             <div style="display: flex; align-items: center; justify-content: center;">
-                <div style="width: 340px; height: 340px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--secondary)); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 48px rgba(99,102,241,0.3); border: 6px solid var(--primary); font-size: 6rem; color: #fff; font-weight: 800; letter-spacing: 2px; user-select: none;">
-                    HP
+                <div style="width: 340px; height: 340px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--secondary)); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 48px rgba(99,102,241,0.3); border: 6px solid var(--primary); overflow: hidden;">
+                    <img src="pfp.jpg" alt="Harshal Patel Headshot" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" />
                 </div>
             </div>
         </div>
@@ -1171,7 +1334,8 @@
             <div class="glass-card" style="grid-column: 1 / -1;">
                 <div class="card-icon">Hi, I'm Harshal👋</div>
                 <p style="font-size: 1.3rem;">
-                    [Placeholder]
+                    I am a first-generation student at Clemson University, majoring in Computer Science. When I’m not coding, you can usually find me on the basketball court, going for a run, watching anime or playing video games.
+                    I am currently an AI Research Assistant for the Watt AI Program and an undergraduate teaching assistant for a Python course at Clemson University.
                 </p>
             </div>
         </div>
@@ -1181,6 +1345,7 @@
     <section id="experience">
         <div class="section-title">Experience</div>
         <div class="timeline">
+            <!-- AI Research Assistant: logo on the right -->
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
@@ -1194,9 +1359,16 @@
                         Selected to join a multidisciplinary AI research initiative, working on a dedicated project team to solve high-impact, real-world problems using artificial intelligence and machine learning.
                     </p>
                 </div>
+                <div class="timeline-logo" style="left: 65%; top: 2.5rem; width: 70px;">
+                    <img src="clemson-logo.png" alt="Clemson Tigers Logo" style="width: 300px; height: auto;">
+                </div>
             </div>
+            <!-- Undergraduate Teaching Assistant: logo on the left -->
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
+                <div class="timeline-logo" style="left: 15%; top: 2.5rem; width: 70px; transform: none;">
+                    <img src="clemson-logo.png" alt="Clemson Tigers Logo" style="width: 300px; height: auto;">
+                </div>
                 <div class="timeline-content">
                     <h4>Undergraduate Teaching Assistant</h4>
                     <div class="timeline-meta">
@@ -1206,9 +1378,11 @@
                     </div>
                     <p>
                         Selected to instruct a weekly lab section of 20 students for a Python programming course.
+                        Facilitated 1-hour office hours twice weekly, assisting ~8 students per session with Python programming concepts, debugging, and assignment guidance.
                     </p>
                 </div>
             </div>
+            <!-- Privacy Compliance Research Assistant: logo on the right -->
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
@@ -1224,7 +1398,11 @@
                         Synthesized findings into a survey paper, summarizing key trends, challenges, and advancements in privacy labels across different platforms.
                     </p>
                 </div>
+                <div class="timeline-logo" style="left: 65%; top: 2.5rem; width: 70px;">
+                    <img src="clemson-logo.png" alt="Clemson Tigers Logo" style="width: 300px; height: auto;">
+                </div>
             </div>
+            <!-- Motel Receptionist: logo on the right -->
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
@@ -1240,6 +1418,9 @@
                         Utilized motel booking software to manage room availability and optimize occupancy rates.
                     </p>
                 </div>
+                <div class="timeline-logo" style="left: 18%; top: 2.5rem; width: 70px;">
+                    <img src="clemson-logo.png" alt="Clemson Tigers Logo" style="width: 300px; height: auto;">
+                </div>
             </div>
         </div>
     </section>
@@ -1249,8 +1430,11 @@
         <div class="section-title">Projects</div>
         <div class="projects-grid">
             <div class="project-card">
-                <div class="project-header">
-                    <h3>GoHelpMe</h3>
+                <div class="project-header" style="display: flex; align-items: center; gap: 1rem;">
+                    <a href="https://github.com/Hersh3y/GoHelpMe" target="_blank" aria-label="GoHelpMe GitHub" style="display: flex; align-items: center;">
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub" style="width: 28px; height: 28px; margin-right: 0.5rem; filter: brightness(1.2) grayscale(0.2); transition: filter 0.2s;">
+                    </a>
+                    <h3 style="margin: 0;">GoHelpMe</h3>
                 </div>
                 <div class="project-body">
                     <p>
@@ -1268,8 +1452,11 @@
                 </div>
             </div>
             <div class="project-card">
-                <div class="project-header">
-                    <h3>ParkPaw</h3>
+                <div class="project-header" style="display: flex; align-items: center; gap: 1rem;">
+                    <a href="https://github.com/Hersh3y/ParkPaw" target="_blank" aria-label="ParkPaw GitHub" style="display: flex; align-items: center;">
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub" style="width: 28px; height: 28px; margin-right: 0.5rem; filter: brightness(1.2) grayscale(0.2); transition: filter 0.2s;">
+                    </a>
+                    <h3 style="margin: 0;">ParkPaw</h3>
                 </div>
                 <div class="project-body">
                     <p>
@@ -1333,27 +1520,25 @@
 
     <!-- Contact Section -->
     <section id="contact">
-        <div class="section-title">Contact Me</div>
+        <div class="section-title">Let's Connect</div>
         <div class="contact-container">
-            <form class="contact-form" autocomplete="off">
-                <div class="form-group">
-                    <input type="text" id="name" name="name" required placeholder=" " />
-                    <label for="name">Name</label>
-                </div>
-                <div class="form-group">
-                    <input type="email" id="email" name="email" required placeholder=" " />
-                    <label for="email">Email</label>
-                </div>
-                <div class="form-group">
-                    <textarea id="message" name="message" rows="5" required placeholder=" "></textarea>
-                    <label for="message">Message</label>
-                </div>
-                <button type="submit" class="submit-btn">Send Message</button>
-            </form>
-            <div class="social-links">
-                <a href="https://github.com/" class="social-link" target="_blank" aria-label="GitHub">🐙</a>
-                <a href="https://linkedin.com/" class="social-link" target="_blank" aria-label="LinkedIn">💼</a>
-                <a href="mailto:your@email.com" class="social-link" aria-label="Email">✉️</a>
+            <div class="contact-links-grid">
+                <a href="https://github.com/hersh3y" class="contact-link-card" target="_blank" aria-label="GitHub">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub" />
+                    <span>GitHub</span>
+                </a>
+                <a href="https://www.linkedin.com/in/harshal-a-patel/" class="contact-link-card" target="_blank" aria-label="LinkedIn">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn" />
+                    <span>LinkedIn</span>
+                </a>
+                <a href="mailto:harshal29379@gmail.com" class="contact-link-card" aria-label="Email">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" alt="Email" />
+                    <span>Email</span>
+                </a>
+                <a href="https://leetcode.com/u/H3rshey/" class="contact-link-card" target="_blank" aria-label="LeetCode">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/leetcode.svg" alt="LeetCode" />
+                    <span>LeetCode</span>
+                </a>
             </div>
         </div>
     </section>
@@ -1398,11 +1583,11 @@
         }
 
         // Contact form (demo only)
-        document.querySelector('.contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for reaching out! I will get back to you soon.');
-            this.reset();
-        });
+        // document.querySelector('.contact-form').addEventListener('submit', function(e) {
+        //     e.preventDefault();
+        //     alert('Thank you for reaching out! I will get back to you soon.');
+        //     this.reset();
+        // });
 
         // Typing animation
         const typingPhrases = [
