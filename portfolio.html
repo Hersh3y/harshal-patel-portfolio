@@ -303,16 +303,37 @@
             .nav-container {
                 flex-direction: row;
                 justify-content: space-between;
-                padding: 1.2rem 1rem;
+                padding: 1rem 0.5rem;
+            }
+            .logo {
+                font-size: 1.2rem;
+                margin-right: 0.5rem;
             }
             .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100vw;
+                height: calc(100vh - 70px);
+                background: rgba(15, 23, 42, 0.97);
+                backdrop-filter: blur(20px);
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 1.5rem;
+                gap: 2rem;
+                padding: 2rem 1.5rem;
+                transition: left 0.3s ease;
+                z-index: 1001;
+            }
+            .nav-links.active {
+                left: 0;
             }
             .nav-socials {
                 margin-left: 0.2rem;
                 gap: 0.5rem;
+            }
+            .menu-toggle {
+                display: flex;
+                margin-left: 1rem;
             }
         }
 
@@ -488,7 +509,7 @@
 
         /* Sections */
         section {
-            padding: 5rem 2rem;
+            padding: 3rem 1rem;
             max-width: 1200px;
             margin: 0 auto;
             position: relative;
@@ -1008,13 +1029,16 @@
                 position: fixed;
                 top: 70px;
                 left: -100%;
-                width: 100%;
+                width: 100vw;
                 height: calc(100vh - 70px);
-                background: rgba(15, 23, 42, 0.95);
+                background: rgba(15, 23, 42, 0.97);
                 backdrop-filter: blur(20px);
                 flex-direction: column;
-                padding: 2rem;
+                align-items: flex-start;
+                gap: 2rem;
+                padding: 2rem 1.5rem;
                 transition: left 0.3s ease;
+                z-index: 1001;
             }
 
             .nav-links.active {
@@ -1236,6 +1260,189 @@
             width: 70px;
             height: auto;
         }
+
+        /* Add or update these styles in your <style> tag for improved mobile friendliness */
+
+        /* General Section Padding */
+        section {
+            padding: 3rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Navbar */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 1rem 0.5rem;
+            }
+            .logo {
+                font-size: 1.2rem;
+                margin-right: 0.5rem;
+            }
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100vw;
+                height: calc(100vh - 70px);
+                background: rgba(15, 23, 42, 0.97);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 2rem;
+                padding: 2rem 1.5rem;
+                transition: left 0.3s ease;
+                z-index: 1001;
+            }
+            .nav-links.active {
+                left: 0;
+            }
+            .nav-socials {
+                margin-left: 0.2rem;
+                gap: 0.5rem;
+            }
+            .menu-toggle {
+                display: flex;
+                margin-left: 1rem;
+            }
+        }
+
+        /* Hero Section */
+        @media (max-width: 900px) {
+            .hero-content {
+                flex-direction: column;
+                gap: 2.5rem !important;
+                align-items: center !important;
+                justify-content: center !important;
+                text-align: center !important;
+            }
+            .hero-content > div {
+                align-items: center !important;
+                margin-left: 0 !important;
+            }
+            .glitch, .hero-title, #typing-animation {
+                text-align: center !important;
+                margin-left: 0 !important;
+            }
+            .cube-container {
+                display: none !important;
+            }
+        }
+
+        /* Headshot */
+        @media (max-width: 600px) {
+            .hero-content > div:last-child > div {
+                width: 180px !important;
+                height: 180px !important;
+                border-width: 3px !important;
+            }
+        }
+
+        /* Timeline (Experience) */
+        @media (max-width: 900px) {
+            .timeline::before {
+                left: 24px !important;
+            }
+            .timeline-dot {
+                left: 24px !important;
+            }
+            .timeline-content,
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                width: 100% !important;
+                min-width: 0 !important;
+                margin: 0 0 2.5rem 48px !important;
+                text-align: left !important;
+            }
+            .timeline-item {
+                flex-direction: column !important;
+            }
+            .timeline-logo {
+                position: static !important;
+                margin: 1rem 0 1.5rem 48px !important;
+                left: unset !important;
+                top: unset !important;
+                transform: none !important;
+                width: 50px !important;
+            }
+            .timeline-logo img {
+                width: 50px !important;
+                height: auto !important;
+            }
+        }
+
+        /* Projects */
+        @media (max-width: 900px) {
+            .projects-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1.2rem !important;
+            }
+            .project-header {
+                padding: 1.2rem !important;
+            }
+            .project-body {
+                padding: 1.2rem !important;
+            }
+        }
+
+        /* Tech Stack */
+        @media (max-width: 1100px) {
+            .tech-stack-sections {
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 2rem !important;
+            }
+            .tech-stack-group {
+                max-width: 100% !important;
+                min-width: 220px !important;
+                width: 100% !important;
+            }
+            .hexagon-grid {
+                gap: 0.5rem !important;
+            }
+            .hexagon {
+                width: 80px !important;
+                height: 80px !important;
+            }
+            .hexagon span {
+                font-size: 0.7rem !important;
+            }
+        }
+
+        /* Contact Section */
+        @media (max-width: 600px) {
+            .contact-links-grid {
+                gap: 1.2rem !important;
+            }
+            .contact-link-card {
+                width: 80px !important;
+                height: 80px !important;
+                font-size: 0.95rem !important;
+            }
+            .contact-link-card img {
+                width: 28px !important;
+                height: 28px !important;
+                margin-bottom: 0.4rem !important;
+            }
+        }
+
+        /* Section Titles */
+        @media (max-width: 600px) {
+            .section-title {
+                font-size: 2rem !important;
+                margin-bottom: 1.5rem !important;
+            }
+        }
+
+        /* General */
+        @media (max-width: 400px) {
+            body, html {
+                font-size: 14px !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1334,7 +1541,7 @@
             <div class="glass-card" style="grid-column: 1 / -1;">
                 <div class="card-icon">Hi, I'm Harshal👋</div>
                 <p style="font-size: 1.3rem;">
-                    I am a first-generation student at Clemson University, majoring in Computer Science. When I’m not coding, you can usually find me on the basketball court, going for a run, watching anime or playing video games.
+                    I am a first-generation student at Clemson University from Union, SC. I am majoring in Computer Science with minors in Artificial Intelligence and Cybersecurity. When I’m not coding, you can usually find me on the basketball court, going for a run, watching anime, or playing video games.
                     I am currently an AI Research Assistant for the Watt AI Program and an undergraduate teaching assistant for a Python course at Clemson University.
                 </p>
             </div>
@@ -1377,8 +1584,9 @@
                         <span class="location">📍 Clemson, SC</span>
                     </div>
                     <p>
-                        Selected to instruct a weekly lab section of 20 students for a Python programming course.
-                        Facilitated 1-hour office hours twice weekly, assisting ~8 students per session with Python programming concepts, debugging, and assignment guidance.
+                        Instructed a weekly lab section of 38 students in a Python programming course, providing guidance on coding fundamentals and debugging techniques.
+                        Facilitated 1-hour office hours twice weekly, assisting ~12 students per session with Python programming concepts, debugging, and assignment guidance.
+                        Reviewed and provided feedback on 15–21 programming assignments per week, ensuring timely evaluation and helping students improve code quality and problem-solving skills.
                     </p>
                 </div>
             </div>
@@ -1494,8 +1702,10 @@
                 <div class="tech-stack-heading">Frameworks & Libraries</div>
                 <div class="hexagon-grid">
                     <div class="hexagon"><span>Flask</span></div>
+                    <div class="hexagon"><span>Node.js</span></div>
                     <div class="hexagon"><span>React.js</span></div>
                     <div class="hexagon"><span>React Native</span></div>
+                    <div class="hexagon"><span>SQLAlchemy</span></div>
                     <div class="hexagon"><span>NumPy</span></div>
                     <div class="hexagon"><span>Pandas</span></div>
                     <div class="hexagon"><span>Matplotlib</span></div>
@@ -1507,12 +1717,12 @@
                 <div class="tech-stack-heading">Developer Tools</div>
                 <div class="hexagon-grid">
                     <div class="hexagon"><span>Git</span></div>
-                    <div class="hexagon"><span>Firebase</span></div>
-                    <div class="hexagon"><span>Expo</span></div>
-                    <div class="hexagon"><span>Vercel</span></div>
                     <div class="hexagon"><span>VS Code</span></div>
+                    <div class="hexagon"><span>GitHub Copilot</span></div>
                     <div class="hexagon"><span>Linux</span></div>
                     <div class="hexagon"><span>Vim</span></div>
+                    <div class="hexagon"><span>Expo</span></div>
+                    <div class="hexagon"><span>Vercel</span></div>
                 </div>
             </div>
         </div>
