@@ -2158,32 +2158,66 @@
         @media (max-width: 768px) {
             .glitch {
                 font-size: 2.5rem !important;
-                background: linear-gradient(135deg, var(--light), var(--text-light)) !important;
-                background-clip: text !important;
-                -webkit-background-clip: text !important;
-                -webkit-text-fill-color: transparent !important;
+                /* Remove gradient effects on mobile for better readability */
+                background: none !important;
+                color: var(--light) !important;
+                -webkit-text-fill-color: var(--light) !important;
+                text-shadow: 0 2px 20px rgba(124, 58, 237, 0.6),
+                             0 0 40px rgba(236, 72, 153, 0.4) !important;
+            }
+            .glitch::before,
+            .glitch::after {
+                display: none !important; /* Remove glitch effect pseudo-elements on mobile */
             }
             .hero-title {
                 font-size: 1.3rem !important;
+                color: var(--text-light) !important;
             }
             #typing-animation {
                 font-size: 1.3rem !important;
+                color: var(--text-light) !important;
+            }
+            
+            /* Make text more readable on mobile */
+            .glass-card p,
+            .glass-card li,
+            .timeline-content p,
+            .timeline-content ul li,
+            .project-description {
+                color: #e2e8f0 !important; /* Lighter gray for better readability */
             }
         }
 
         @media (max-width: 480px) {
             .glitch {
                 font-size: 2rem !important;
-                background: linear-gradient(135deg, var(--light), var(--text-light)) !important;
-                background-clip: text !important;
-                -webkit-background-clip: text !important;
-                -webkit-text-fill-color: transparent !important;
+                /* Remove gradient effects on mobile for better readability */
+                background: none !important;
+                color: var(--light) !important;
+                -webkit-text-fill-color: var(--light) !important;
+                text-shadow: 0 2px 20px rgba(124, 58, 237, 0.6),
+                             0 0 40px rgba(236, 72, 153, 0.4) !important;
+            }
+            .glitch::before,
+            .glitch::after {
+                display: none !important; /* Remove glitch effect pseudo-elements on mobile */
             }
             .hero-title {
                 font-size: 1.1rem !important;
+                color: var(--text-light) !important;
             }
             #typing-animation {
                 font-size: 1.1rem !important;
+                color: var(--text-light) !important;
+            }
+            
+            /* Make text more readable on mobile */
+            .glass-card p,
+            .glass-card li,
+            .timeline-content p,
+            .timeline-content ul li,
+            .project-description {
+                color: #e2e8f0 !important; /* Lighter gray for better readability */
             }
         }
 
