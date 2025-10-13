@@ -2158,7 +2158,10 @@
         @media (max-width: 768px) {
             .glitch {
                 font-size: 2.5rem !important;
-                /* Keep gradient effect on mobile like desktop */
+                background: linear-gradient(135deg, var(--light), var(--text-light)) !important;
+                background-clip: text !important;
+                -webkit-background-clip: text !important;
+                -webkit-text-fill-color: transparent !important;
             }
             .hero-title {
                 font-size: 1.3rem !important;
@@ -2171,7 +2174,10 @@
         @media (max-width: 480px) {
             .glitch {
                 font-size: 2rem !important;
-                /* Keep gradient effect on mobile like desktop */
+                background: linear-gradient(135deg, var(--light), var(--text-light)) !important;
+                background-clip: text !important;
+                -webkit-background-clip: text !important;
+                -webkit-text-fill-color: transparent !important;
             }
             .hero-title {
                 font-size: 1.1rem !important;
