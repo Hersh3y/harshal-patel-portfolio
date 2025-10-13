@@ -1626,13 +1626,19 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 1000;
+            z-index: 9998;
             opacity: 0;
-            transition: opacity 2s ease;
+            transition: opacity 0.5s ease;
         }
 
         .matrix-rain.active {
             opacity: 0.3;
+        }
+
+        /* Higher opacity for matrix rain during party mode */
+        .party-mode .matrix-rain.active {
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
         }
 
         .matrix-column {
@@ -1641,14 +1647,14 @@
             font-family: 'Courier New', monospace;
             font-size: 14px;
             white-space: pre;
-            animation: matrix-fall 3s linear infinite;
+            animation: matrix-fall 12s linear infinite; /* Extended to 12s for smoother flow */
         }
 
         @keyframes matrix-fall {
-            0% { transform: translateY(-100vh); opacity: 0; }
+            0% { transform: translateY(-200vh); opacity: 0; }
             10% { opacity: 1; }
             90% { opacity: 1; }
-            100% { transform: translateY(100vh); opacity: 0; }
+            100% { transform: translateY(300vh); opacity: 0; } /* Extended to 300vh to cover entire page */
         }
 
         .party-mode {
@@ -2397,6 +2403,42 @@
         .performance-mode .shape,
         .performance-mode .cube {
             animation-play-state: paused !important;
+        }
+        
+        /* Mobile friendliness tweaks for main name and hero */
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.4rem;
+                letter-spacing: 0.02em;
+                white-space: normal; /* allow wrapping */
+                display: inline-block;
+                text-align: center;
+            }
+
+            .hero-content {
+                gap: 2rem;
+                padding: 1.2rem;
+                flex-direction: column;
+            }
+
+            .glitch {
+                font-size: clamp(2rem, 12vw, 3.2rem);
+                text-align: center;
+                letter-spacing: 0.02em;
+                word-break: break-word;
+                white-space: normal;
+                margin: 0 auto;
+            }
+
+            .hero-headshot {
+                width: 200px;
+                height: 200px;
+                border-width: 4px;
+            }
+
+            .nav-container {
+                padding: 1rem;
+            }
         }
     </style>
 </head>
@@ -3190,8 +3232,17 @@
 
                 if (logoClickCount === 3) {
                     document.body.classList.add('party-mode');
+                    
+                    // Start matrix rain if not already active
+                    if (!matrixRain.classList.contains('active') || matrixRain.children.length === 0) {
+                        startMatrixRain();
+                    } else {
+                        matrixRain.classList.add('active');
+                    }
+                    
                     setTimeout(() => {
                         document.body.classList.remove('party-mode');
+                        matrixRain.classList.remove('active'); // Deactivate matrix rain after disco mode
                     }, 3000);
                     logoClickCount = 0;
                 }
@@ -3223,7 +3274,7 @@
         }
 
         function activateKonamiMode() {
-            showSecretMessage('🎮 KONAMI CODE ACTIVATED! 🎮<br><small>The Matrix has you...</small>');
+            // Konami mode activated (no popup) — keep visual effects but don't show the secret message
             document.body.classList.add('konami-mode');
             startMatrixRain();
             
@@ -3249,7 +3300,8 @@
                 column.style.animationDelay = Math.random() * 3 + 's';
                 
                 let text = '';
-                for (let j = 0; j < 50; j++) {
+                // Increased from 50 to 150 characters for longer columns
+                for (let j = 0; j < 150; j++) {
                     text += characters[Math.floor(Math.random() * characters.length)] + '\n';
                 }
                 column.textContent = text;
