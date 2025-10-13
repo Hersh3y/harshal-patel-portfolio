@@ -2903,57 +2903,61 @@
 
     <!-- Scripts -->
     <script>
-        // Loading Screen
-        let loadingProgress = 0;
+        // Loading Screen - Simplified approach
         const loadingScreen = document.getElementById('loading-screen');
         const progressBar = document.querySelector('.loading-progress');
         const percentage = document.querySelector('.loading-percentage');
+        
+        let loadingProgress = 0;
+        let loadingInterval = null;
 
-        function updateProgress() {
-            loadingProgress += Math.random() * 15;
-            if (loadingProgress > 100) loadingProgress = 100;
+        function animateProgress() {
+            loadingProgress += Math.random() * 10 + 5;
+            if (loadingProgress > 95) loadingProgress = 95; // Cap at 95% until fully loaded
             
             if (progressBar) progressBar.style.width = loadingProgress + '%';
             if (percentage) percentage.textContent = Math.round(loadingProgress) + '%';
+        }
+
+        function hideLoadingScreen() {
+            // Complete the progress bar
+            if (progressBar) progressBar.style.width = '100%';
+            if (percentage) percentage.textContent = '100%';
             
-            if (loadingProgress < 100) {
-                setTimeout(updateProgress, 100 + Math.random() * 200);
-            } else {
+            // Hide loading screen after a short delay
+            setTimeout(() => {
+                if (loadingScreen) loadingScreen.classList.add('hidden');
+                
+                // Initialize scroll animations after loading
                 setTimeout(() => {
-                    if (loadingScreen) loadingScreen.classList.add('hidden');
-                    // Initialize scroll animations after loading (if functions exist)
                     if (typeof initScrollAnimations === 'function') {
                         initScrollAnimations();
                     }
-                    // Initialize enhanced scroll effects (if function exists)
                     if (typeof initEnhancedScrollEffects === 'function') {
                         initEnhancedScrollEffects();
                     }
-                }, 500);
+                }, 100);
+            }, 500);
+            
+            // Clear the interval
+            if (loadingInterval) {
+                clearInterval(loadingInterval);
+                loadingInterval = null;
             }
         }
 
-        // Wait for DOM to be fully loaded before starting
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', updateProgress);
-        } else {
-            updateProgress();
-        }
+        // Start progress animation immediately
+        loadingInterval = setInterval(animateProgress, 150);
+
+        // Hide loading screen when everything is loaded
+        window.addEventListener('load', hideLoadingScreen);
         
-        // Also ensure loading screen hides when window fully loads (failsafe)
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                if (loadingScreen && !loadingScreen.classList.contains('hidden')) {
-                    loadingScreen.classList.add('hidden');
-                    if (typeof initScrollAnimations === 'function') {
-                        initScrollAnimations();
-                    }
-                    if (typeof initEnhancedScrollEffects === 'function') {
-                        initEnhancedScrollEffects();
-                    }
-                }
-            }, 2000); // Give it 2 seconds after full load
-        });
+        // Failsafe: hide after maximum 5 seconds regardless
+        setTimeout(() => {
+            if (loadingScreen && !loadingScreen.classList.contains('hidden')) {
+                hideLoadingScreen();
+            }
+        }, 5000);
 
         // Enhanced scroll effects for parallax
         function initEnhancedScrollEffects() {
