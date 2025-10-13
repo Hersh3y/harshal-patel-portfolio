@@ -1046,7 +1046,7 @@
 
         .hexagon:hover {
             background: linear-gradient(135deg, rgba(124, 58, 237, 0.35), rgba(236, 72, 153, 0.35));
-            transform: translateY(-8px) scale(1.1) rotate(5deg);
+            transform: translateY(-8px) scale(1.1);
             box-shadow: 0 16px 32px rgba(124, 58, 237, 0.4);
         }
 
@@ -2175,7 +2175,8 @@
             }
             #typing-animation {
                 font-size: 1.3rem !important;
-                color: var(--text-light) !important;
+                /* Match desktop color on mobile */
+                color: var(--text) !important;
             }
             
             /* Make text more readable on mobile */
@@ -2185,6 +2186,11 @@
             .timeline-content ul li,
             .project-description {
                 color: #e2e8f0 !important; /* Lighter gray for better readability */
+            }
+            
+            /* Keep role titles (h4) with purple color on mobile */
+            .timeline-content h4 {
+                color: var(--primary) !important;
             }
         }
 
@@ -2208,7 +2214,8 @@
             }
             #typing-animation {
                 font-size: 1.1rem !important;
-                color: var(--text-light) !important;
+                /* Match desktop color on mobile */
+                color: var(--text) !important;
             }
             
             /* Make text more readable on mobile */
@@ -2218,6 +2225,11 @@
             .timeline-content ul li,
             .project-description {
                 color: #e2e8f0 !important; /* Lighter gray for better readability */
+            }
+            
+            /* Keep role titles (h4) with purple color on mobile */
+            .timeline-content h4 {
+                color: var(--primary) !important;
             }
         }
 
