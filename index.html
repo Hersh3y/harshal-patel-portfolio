@@ -562,18 +562,19 @@
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 1;
             overflow: hidden;
+            display: inline-block;
         }
 
         .nav-links li a::after {
             content: '';
             position: absolute;
-            left: 50%;
+            left: 10%;
             bottom: 4px;
             width: 0%;
             height: 3px;
             background: linear-gradient(90deg, var(--primary-light), var(--secondary));
             border-radius: 2px;
-            transition: width 0.4s, left 0.4s;
+            transition: width 0.4s ease;
             z-index: -1;
         }
 
@@ -587,7 +588,6 @@
         .nav-links li a:hover::after,
         .nav-links li a:focus::after {
             width: 80%;
-            left: 10%;
         }
 
         .nav-socials {
@@ -911,14 +911,12 @@
             font-weight: 900;
             text-align: center;
             margin-bottom: 4rem;
-            background: linear-gradient(135deg, var(--primary-light), var(--secondary));
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #a78bfa;
             position: relative;
             animation: slideInUp 1s ease;
             letter-spacing: -0.02em;
             /* Add subtle text shadow for depth */
-            filter: drop-shadow(0 4px 12px rgba(124, 58, 237, 0.3));
+            filter: drop-shadow(0 4px 12px rgba(167, 139, 250, 0.4));
         }
 
         /* Add decorative line under section titles */
@@ -930,7 +928,7 @@
             transform: translateX(-50%);
             width: 80px;
             height: 4px;
-            background: linear-gradient(90deg, transparent, var(--primary), var(--secondary), transparent);
+            background: linear-gradient(90deg, transparent, #a78bfa, #ec4899, transparent);
             border-radius: 2px;
         }
 
@@ -2024,17 +2022,14 @@
             border: 2px solid transparent;
             box-shadow: 0 12px 40px rgba(124, 58, 237, 0.25),
                         0 0 60px rgba(236, 72, 153, 0.15);
-            transform: translateY(-10px) scale(1.12) rotate(-5deg);
         }
         
         .contact-link-card:hover img {
             filter: brightness(2) grayscale(0);
-            transform: scale(1.15) rotateY(360deg);
         }
 
         .contact-link-card:hover span {
             color: white;
-            transform: scale(1.05);
         }
 
         /* Easter Egg Hint */
@@ -2918,10 +2913,14 @@
             } else {
                 setTimeout(() => {
                     loadingScreen.classList.add('hidden');
-                    // Initialize scroll animations after loading
-                    initScrollAnimations();
-                    // Initialize enhanced scroll effects
-                    initEnhancedScrollEffects();
+                    // Initialize scroll animations after loading (if functions exist)
+                    if (typeof initScrollAnimations === 'function') {
+                        initScrollAnimations();
+                    }
+                    // Initialize enhanced scroll effects (if function exists)
+                    if (typeof initEnhancedScrollEffects === 'function') {
+                        initEnhancedScrollEffects();
+                    }
                 }, 500);
             }
         }
@@ -3035,7 +3034,7 @@
 
         // Add magnetic effect to interactive elements
         function initMagneticEffect() {
-            const magneticElements = document.querySelectorAll('.hero-cta, .contact-link-card');
+            const magneticElements = document.querySelectorAll('.hero-cta');
             
             magneticElements.forEach(element => {
                 element.addEventListener('mousemove', function(e) {
