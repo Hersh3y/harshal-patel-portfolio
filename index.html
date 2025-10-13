@@ -2913,14 +2913,14 @@
             loadingProgress += Math.random() * 15;
             if (loadingProgress > 100) loadingProgress = 100;
             
-            progressBar.style.width = loadingProgress + '%';
-            percentage.textContent = Math.round(loadingProgress) + '%';
+            if (progressBar) progressBar.style.width = loadingProgress + '%';
+            if (percentage) percentage.textContent = Math.round(loadingProgress) + '%';
             
             if (loadingProgress < 100) {
                 setTimeout(updateProgress, 100 + Math.random() * 200);
             } else {
                 setTimeout(() => {
-                    loadingScreen.classList.add('hidden');
+                    if (loadingScreen) loadingScreen.classList.add('hidden');
                     // Initialize scroll animations after loading (if functions exist)
                     if (typeof initScrollAnimations === 'function') {
                         initScrollAnimations();
@@ -2933,8 +2933,27 @@
             }
         }
 
-        // Start loading animation
-        updateProgress();
+        // Wait for DOM to be fully loaded before starting
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', updateProgress);
+        } else {
+            updateProgress();
+        }
+        
+        // Also ensure loading screen hides when window fully loads (failsafe)
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                if (loadingScreen && !loadingScreen.classList.contains('hidden')) {
+                    loadingScreen.classList.add('hidden');
+                    if (typeof initScrollAnimations === 'function') {
+                        initScrollAnimations();
+                    }
+                    if (typeof initEnhancedScrollEffects === 'function') {
+                        initEnhancedScrollEffects();
+                    }
+                }
+            }, 2000); // Give it 2 seconds after full load
+        });
 
         // Enhanced scroll effects for parallax
         function initEnhancedScrollEffects() {
