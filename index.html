@@ -604,21 +604,23 @@
             align-items: center;
             justify-content: center;
             border-radius: 10px;
-            background: rgba(255,255,255,0.07);
-            border: 1.5px solid rgba(99,102,241,0.13);
+            background: rgba(255,255,255,0.12);
+            border: 1.5px solid rgba(124,58,237,0.35);
             transition: background 0.2s, border 0.2s, transform 0.2s;
             padding: 4px;
+            box-shadow: 0 2px 8px rgba(124, 58, 237, 0.15);
         }
         .nav-social-link img {
             width: 22px;
             height: 22px;
-            filter: brightness(1.2) grayscale(0.2);
+            filter: brightness(1.5) grayscale(0);
             transition: filter 0.2s;
         }
         .nav-social-link:hover {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             border: 1.5px solid var(--primary);
             transform: translateY(-2px) scale(1.13);
+            box-shadow: 0 4px 16px rgba(124, 58, 237, 0.4);
         }
         .nav-social-link:hover img {
             filter: brightness(2) grayscale(0);
