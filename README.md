@@ -23,8 +23,10 @@ Welcome to my portfolio repository! This is the source code for my personal webs
 harshal-patel-portfolio/
 ├── index.html          # Main HTML file with inline CSS and JavaScript
 ├── README.md           # Project documentation
-├── clemson-logo.png   # Clemson University logo
-└── mitre_logo.jpg     # MITRE Corporation logo
+├── headshot.jpg        # headshot
+├── clemson-logo.png    # Clemson University logo
+├── mitre_logo.jpg      # MITRE Corporation logo
+└── pfp.jpg             # Old Profile Picture
 ```
 
 This project is open source and available for personal use. Feel free to fork and customize for your own portfolio!
